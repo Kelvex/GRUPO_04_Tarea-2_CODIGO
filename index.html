@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author"      content="Grupo 4">
+
+<title>Grupo_04_Tarea_2</title>
+<!-- Icono -->
+<link rel="shortcut icon" href="./img/img.png">
+
+<!-- Bootstrap itself -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+<!-- Custom styles -->
+<link rel="stylesheet" href="./css/magister.css">
+
+<!-- Fonts -->
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
+<!-- Main css -->
+<link rel="stylesheet" href="./css/main.css">
+</head>
+
+<!-- use "theme-invert" class on bright backgrounds, also try "text-shadows" class -->
+<body class="theme-invert">
+
+<nav class="mainmenu">
+<div class="container">
+	<div class="dropdown">
+		<button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+		<!-- <a data-toggle="dropdown" href="#">Dropdown trigger</a> -->
+		<div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<a href="#head">Inicio</a>
+			<a href="#animation">Animaciones</a>
+			<a href="#event">Eventos</a>
+			<a href="#event-l">Evento Listener</a>
+			<a href="#navigation">Navegacion</a>
+			<a href="#nodes">Nodos</a>
+			<a href="#collections">Colecciones</a>
+			<a href="#nodeLists">Lista de Nodos</a>
+		</div>
+	</div>
+</div>
+</nav>
+<!-- Main (Home) section -->
+<section class="section" id="head">
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+			<!-- Site Title, your name, HELLO msg, etc. -->
+			<h2 class="title">Universidad de las Fuerzas Armadas</h2>
+			<h3 class="subtitle">JS HTML DOM - AVANZADO</h3>
+
+			<!-- Short introductory (optional) -->
+			<h4 >
+				GRUPO 4
+			</h4>
+			<h4 class="lista">Integrantes:</h4>
+			<ul>
+				<li class="lista">Byron Avalos</li>
+				<li class="lista">Kevin Cando</li>
+				<li class="lista">Henry Jaramillo</li>
+			</ul>
+		</div>
+	</div> <!-- /row -->
+</div>
+</section>
+
+<section class="section" id="nodeLists">
+<div class="container">
+	<h2 class="text-center title">JS HTML DOM Node Lists</h2>		
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<h2>Objeto HTML DOM NodeList</h2><br>
+			<ul>
+				<li><p class="lead">Es una lista (colección) de nodos extraídos de un documento.</p></li>
+				<li><p class="lead">Similar al objeto <i>HTMLCollection</i>.</p></li>
+				<li><p class="lead">Algunos navegadores (antiguos) devuelven un objeto <i>NodeList</i> en lugar de un <i>HTMLCollection</i> para métodos como <i>getElementsByClassName()</i>.</p></li>
+				<li><p class="lead">Todos los navegadores devuelven un objeto <i>NodeList</i> para la propiedad <i>childNodes</i>.</p></li>
+				<li><p class="lead">La mayoría de los navegadores devuelven un objeto <i>NodeList</i> para el método <i>querySelectorAll()</i>.</p></li>
+			</ul>												
+			<h2>Ejemplo</h2><br>
+			<p class="lead">El siguiente código selecciona todos los <i>&lt;p&gt;</i> nodos de un documento:</p>
+			<div class="thumbnail">
+				<p class="lead text-center"><i style="color: blue;">const</i> nodoLista = document.querySelectorAll(<i style="color: red;">"p"</i>);</p>	
+			</div>
+			<p class="lead">Al igual que <i>HTMLCollection</i> se puede acceder a los elementos de la <i>NodeList</i> mediante un número de índice.</p>
+			<p class="lead">Para acceder al segundo nodo <i>&lt;p&gt;</i> se puede escribir:</p>
+			<div class="thumbnail">
+				<p class="lead text-center">nodoLista[<i style="color: red;">"1"</i>]</p>
+			</div>
+			<div class="thumbnail">
+				<div id="ejemploNodeList">
+					<p class="lead">Párrafo 1 en NodeList</p>
+					<p class="lead">Párrafo 2 en NodeList</p>
+					<p class="lead">Párrafo 3 en NodeList</p>
+				</div>
+				<label for="indice" class="lead">Ingrese índice: </label>
+				<input type="number" class="lead" name="indice2" id="idIndice2" min="0"><br>
+				<button class="btn btn-default lead" onclick="nodeIngreso();">Enviar</button>			
+				<p class="lead" id="ejemplo3"></p>					
+			</div>
+			<h2>HTML DOM Node List Length</h2><br>
+			<p class="lead">La propiedad <i>length</i> define el número de nodos en un NodeList:</p>
+			<div class="thumbnail">
+				<p class="lead text-center">miNodeList.length</p>
+			</div>
+			<p class="lead">La propiedad <i>length</i> es útil cuando se desea recorrer los nodos de una lista de nodos.</p>
+			<h2>Ejemplo</h2><br>
+			<p class="lead">El siguiente código cambia el color de todos los <i>&lt;p&gt;</i> elementos en una lista de nodos:</p>
+			<div class="thumbnail">
+				<p class="lead"><i style="color: blue;">const</i> miNodeList = document.querySelectorAll(<i style="color: red;">"p"</i>);</p>
+				<p class="lead"><i style="color: blue;">for</i> (<i style="color: blue;">let</i> i = 0; i < miNodeList.length; i++) {</p>
+				<p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;miNodeList[i].style.color = <i style="color: green;">"green"</i>;</p>
+				<p class="lead">}</p>
+			</div>
+			<div class="thumbnail">
+				<div id="ejemploNodeList2">
+					<p class="lead">Aplicación de Tecnologías WEB</p>
+					<p class="lead">NRC</p>
+					<p class="lead">7383</p>						
+					<p class="lead">TAREA 2</p>
+					<p class="lead">Presione el botón para cambiar el color de los párrafos.</p>
+					<p class="lead" id="ejemplo4"></p>
+				</div>			
+				<button class="btn btn-default lead" onclick="cambioColor();">Cambiar</button>
+				<button class="btn btn-default lead" onclick="normalColor();">Deshacer</button>			
+			</div>
+			<h2>Diferencias entre NodeList y HTMLCollection</h2><br>
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">NodeList</th>
+			      <th scope="col">HTMLCollection</th>				      
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>				      
+			      <td>Puede contener cualquier tipo de nodo como nodos de texto, nodos de atributos, etc.</td>
+			      <td>Contiene solo nodos de elementos.</td>
+			    </tr>
+			    <tr>				      
+			      <td>No permite acceder a sus elementos a través de un índice con nombre.</td>
+			      <td>Expone sus miembros directamente como propiedades tanto por nombre como por índice.</td>				      
+			    </tr>
+			    <tr>				      
+			      <td>La única propiedad que admite es <i>NodeList.length</i></td>
+			      <td>La única propiedad que admite es <i>HTMLCollection.length</i></td>
+			    </tr>
+			    <tr>				      
+			      <td>Es posible hacer iteraciones en los elementos con el método <i>forEach()</i>.</td>
+			      <td>No se puede hacer iteraciones en los elementos con el método <i>forEach()</i>.</td>
+			    </tr>
+			  </tbody>
+			</table>				
+			<div class="jumbotron">
+				<h2>Una lista de nodos NO es una matriz!</h2>
+				<p>Se puede recorrer la lista de nodos y referirse a sus nodos como una matriz.</p>
+				<p>Sin embargo, no se puede usar métodos de matriz, como <i>valueOf(), push(), pop () o join ()</i> en una lista de nodos.</p>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<!-- Second (About) section -->
+<section class="section" id="animation">
+<div class="container">
+	<h2 class="text-center title">Animaciones</h2>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">    
+			<h5><strong>Consideraciones:</strong></h5>
+			<ul>
+			   	<li>Un buen uso de este recurso podemos conseguir la experiencia del usuario sea inolvidable y digno de mención en alguna conversación del sector.</li>
+			    <li>Todas las animaciones deben ser relativas a un elemento contenedor.</li>
+			    <li>El elemento contenedor debe crearse con style = " position: relative". El elemento de animación debe crearse con style = " position: absolute".</li>
+			    <li>Las animaciones de JavaScript se realizan programando cambios graduales en el estilo de un elemento. Los cambios son llamados por un temporizador. Cuando el intervalo del temporizador es pequeño, la animación parece continua.</li>
+			</ul>    
+		</div>
+		<div class="col-sm-4">
+			<h5><strong>Ejemplo Práctico &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="myMove()">Ver</button></strong></h5>    
+			<div class="contenedor" id="contenedorA">
+				<div id="cuadro">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<!-- Third (Works) section -->
+<section class="section" id="event">
+<div class="container">
+
+	<h2 class="text-center title">Eventos</h2>
+	<p class="lead text-center">
+		Un JavaScript se puede ejecutar cuando ocurre un evento, como cuando un usuario hace clic en un elemento HTML. Para ejecutar código cuando un usuario hace clic en un elemento, agregue código JavaScript a un atributo de evento HTML:	onclick=JavaScript.	
+	</p>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Clic en el botón para desplazar la fecha</h3>
+					<p id="ejem1"></p>
+					<p><button onclick="displayDate()" class="btn btn-primary">Clic aquí</button></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Clic en el texto para cambiar su contenido</h3>
+					<p onclick="changeText(this)">Clic aquí</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Los eventos onmouseover y onmouseout</h3>
+					<div class="ejem2" onmouseover="mOver(this)" onmouseout="mOut(this)">Se pueden usar para activar una función cuando</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Los eventos onmousedown, onmouseup y onclick</h3>
+					<div class="ejem3" onmousedown="mDown(this)" onmouseup="mUp(this)">Son todos partes de un clic del ratón.</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+</section>
+
+<!-- Fourth (Contact) section -->
+<section class="section" id="event-l">
+<div class="container">
+	<h2 class="text-center title">Event-Listener:addEventListener()</h2>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">    
+			<h5><strong>Consideraciones:</strong></h5>
+			<ul>
+			   	<li>El método adjunta un controlador de eventos al elemento especificado.</li>
+			    <li>El método adjunta un controlador de eventos a un elemento sin sobrescribir los controladores de eventos existentes.</li>
+			    <li>Puede agregar muchos controladores de eventos a un elemento.</li>
+			    <li>Puede agregar muchos controladores de eventos del mismo tipo a un elemento, es decir, dos eventos de "clic".</li>
+			    <li>Puede agregar detectores de eventos a cualquier objeto DOM, no solo a elementos HTML. es decir, el objeto de ventana.</li>
+			    <li>Cuando se utiliza el addEventListener()método, JavaScript se separa del marcado HTML, para una mejor legibilidad y le permite agregar detectores de eventos incluso cuando no controla el marcado HTML.</li>
+			</ul>    
+		</div>
+		<div class="col-sm-4 ">
+			<h5><strong>Sintaxis:</strong></h5>
+			<p>element.addEventListener(event, function, useCapture);</p>
+			<p>El primer parámetro es el tipo de evento (como " click" o " mousedown" o cualquier otro evento DOM de HTML ).<br>Donde:</p>
+			<ul>
+				<li>El segundo parámetro es la función que queremos llamar cuando ocurre el evento.</li>
+				<li>El tercer parámetro es un valor booleano que especifica si se utilizará el burbujeo de eventos o la captura de eventos. Este parámetro es opcional.</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Este ejemplo usa el método addEventListener () para ejecutar una función cuando un usuario hace clic en un botón.</h3>
+					<p><button id="myBtn222" class="btn btn-primary">Clic aquí</button></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Este ejemplo usa el método addEventListener () para agregar muchos eventos en el mismo botón.</h3>
+					<p><button id="myBtn33" class="btn btn-primary">Clic aquí</button>
+					<p id="demo33"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Este ejemplo demuestra cómo pasar valores de parámetros cuando se usa el método addEventListener ().</h3>
+					<p><button id="myBtn2" class="btn btn-primary">Clic aquí para calcular</button>
+					<p id="demo2"></p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Evento burbujeante</h3>
+					<p>El evento del elemento más interno se maneja primero y luego el externo: el evento de clic del elemento &lt;p&gt; se maneja primero, luego el evento de clic del elemento &lt;div>&lt;/p&gt;
+					<div id="myDiv1">
+						<p id="myP1">Click me!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<section class="section" id="navigation">
+<div class="container">
+
+	<h2 class="text-center title">Navegación</h2>
+	<p class="text-center">Con HTML DOM, puede navegar por el árbol de nodos utilizando relaciones de nodos.</p>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">    
+			<h2>Nodos DOM<br></h2>
+			<p>De acuerdo con el estándar DOM HTML de W3C, todo en un documento HTML es un nodo:</p>    
+             <ul>
+             	<li>Todo el documento es un nodo de documento.</li>
+             	<li>Cada elemento HTML es un nodo de elemento</li>
+             	<li>El texto dentro de los elementos HTML son nodos de texto.</li>
+             	<li>Cada atributo HTML es un nodo de atributo (obsoleto)</li>
+             	<li>Todos los comentarios son nodos de comentarios</li>
+             </ul>
+             <img src="./img/navega1.gif" width="100%">
+		</div>
+		<div class="col-sm-4">
+			<h2>Relaciones de nodo<br></h2>    
+			<p>Los nodos del árbol de nodos tienen una relación jerárquica entre sí. </p> 
+			<p>Los términos padre, hijo y hermano se utilizan para describir las relaciones.</p>
+			<ul>
+				<li>En un árbol de nodos, el nodo superior se llama raíz (o nodo raíz)</li>
+				<li>Cada nodo tiene exactamente un padre, excepto la raíz (que no tiene padre)</li>
+				<li>Un nodo puede tener varios hijos</li>
+				<li>Los hermanos (hermanos o hermanas) son nodos con el mismo padre</li>
+			</ul>   
+			<img src="./img/navega2.gif" width="100%">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<h2>Navegando entre nodos</h2>
+			<p>Puede utilizar las siguientes propiedades de nodo para navegar entre nodos con JavaScript:</p>
+            <ul>
+             	<li>parentNode</li>
+             	<li>childNodes[nodenumber]</li>
+             	<li>firstChild</li>
+             	<li>lastChild</li>
+             	<li>nextSibling</li>
+             	<li>previousSibling</li>
+             </ul>
+             <h2>InnerHTML</h2>
+             <p>Usamos la propiedad innerHTML para recuperar el contenido de un elemento HTML</p>
+             <h2>Nodos raíz DOM</h2>
+             <p>Hay dos propiedades especiales que permiten el acceso al documento completo:</p>
+             <ul>
+             	<li>document.body - El cuerpo del documento</li>
+             	<li>document.documentElement - El documento completo</li>
+             </ul>
+             <h2>JavaScript HTMLDOM</h2>
+             <p>Visualización de document.body</p>
+             <button class="btn btn-default" onclick="verbody()">Ver body</button>
+             <p id="nodoraiz"></p>
+             
+
+		</div>
+		<div class="col-sm-4">
+			<h2>Nodos secundarios y valores de nodo</h2>
+			<p>Un error común en el procesamiento de DOM es esperar que un nodo de elemento contenga texto.</p>
+			<h4 class="text-danger">Ejemplo</h4>
+			<p class="text-primary">< title id="demo">DOM Tutorial< /title></p>
+            <p>Se puede acceder al valor del nodo de texto mediante la innerHTMLpropiedad del nodo :</p>
+            <p class="text-success">&nbsp&nbsp myTitle = document.getElementById("demo").innerHTML;</p>
+			<p>Acceder a la propiedad innerHTML es lo mismo que acceder a la nodeValue del primer hijo:</p>
+			<p class="text-secondary">&nbsp&nbsp myTitle = document.getElementById("demo").firstChild.nodeValue;</p>
+            <p>Acceder al primer hijo también se puede hacer así:</p>
+            <p class="text-secondary">&nbsp&nbsp myTitle = document.getElementById("demo").childNodes[0].nodeValue;</p>
+            <div class="jumbotron">
+            	<h4 class="text-danger">Ejemplo</h4>
+                <h5 id="id11">Mi primera página</h5>
+                <p id="id12"></p>
+                <button class="btn btn-default" onclick="copiarh()">Copiar</button>
+            
+            </div>
+            
+            <h3>La propiedad nodeName</h3>
+             <p>La nodeNamepropiedad especifica el nombre de un nodo.</p>
+             <ul>
+             	<li>nodeName es de solo lectura</li>
+             	<li>nodeName de un nodo de elemento es el mismo que el nombre de la etiqueta</li>
+             	<li>nodeName de un atributo nodo es el nombre del atributo</li>
+             	<li>nodeName de un nodo de texto es siempre #text</li>
+             	<li>nodeName del nodo del documento es siempre #document</li>
+             </ul>
+             <div class="jumbotron">
+             	<h4 class="text-danger">Ejemplo</h4>
+                <h5 id="navid01">My First Page</h5>
+                <p id="navid02"></p>
+                <button class="btn btn-default" onclick="verNombreNodo()">Nombre del nodo</button>
+                
+             </div>
+             
+            <h3>La propiedad nodeValue</h3>
+            <p>La nodeValuepropiedad especifica el valor de un nodo.</p>
+            <h3>La propiedad nodeType</h3>
+            <p>La nodeTypepropiedad es de solo lectura. Devuelve el tipo de nodo.</p>
+            <div class="jumbotron">
+            	<h4 id="nodetypeid01">My First Page</h4>
+                <p id="nodetypeid02"></p>
+                <script>
+                    document.getElementById("nodetypeid02").innerHTML = document.getElementById("nodetypeid01").nodeType;
+                </script>
+            </div>
+            
+
+		</div>
+	</div>
+</div>
+</section>
+
+<section class="section" id="nodes">
+<div class="container">
+	<h2 class="text-center title">NODOS</h2>
+	<p class="lead text-center">Agregar y eliminar nodos (elementos HTML)</p>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Creación de nuevos elementos HTML (nodos)</h3>
+					<p>Para agregar un nuevo elemento al DOM HTML, primero debe crear el elemento (nodo de elemento) y luego agregarlo a un elemento existente.</p>
+					<p class="text-danger">Ejemplo</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				
+				<div class="caption">
+					<h3>Creando nuevos elementos HTML - insertBefore ()</h3>
+					<p>El appendChild()método del ejemplo anterior agregó el nuevo elemento como último hijo del padre.
+                    Si no lo desea, puede usar el insertBefore()método</p>
+                    <p class="text-danger">Ejemplo</p>
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+<div class="row">
+	<div class="col-sm-4 col-sm-offset-2">
+		<div class="thumbnail">
+			<div class="jumbotron">
+                <h3>Agregar nuevo elemento HTML</h3>
+                <div id="nodediv1">
+                <p id="p1">Primer parrafo</p>
+                <p id="p2">Segundo Parrafo</p>
+                </div>
+                <button class="btn btn-default" onclick="agregarElemento()">Agregar</button>
+                </div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="thumbnail">
+			<div class="jumbotron">
+                    <h3>Agregar nuevo elemento HTML</h3>
+                    <div id="insertBediv1">
+                    <p id="insertBep1">Primer Parrafo</p>
+                    <p id="insertBep2">Segundo Parrafo</p>
+                    </div>
+                    <button class="btn btn-default" onclick="agregarElemento2()">Agregar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-4 col-sm-offset-2">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3>Eliminar elementos HTML existentes</h3>
+					<p>Para eliminar un elemento HTML, use el remove() método:</p>
+					<p class="text-danger">Ejemplo</p>
+				</div>
+				
+				<div class="jumbotron">
+                <h3>Remover elemento HTML</h3>
+                <div>
+                <p id="removep1">Primer Parrafo</p>
+                <p id="removep2">Segundo Parrafo</p>
+                </div>
+                <button class="btn btn-default" onclick="removerElemento()">Remover Elemento</button>
+                </div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				
+				<div class="caption">
+					<h3>Eliminar un nodo secundario</h3>
+					<p>Para los navegadores que no admiten el remove()método, debe encontrar el nodo principal para eliminar un elemento</p>
+                    <p class="text-danger">Ejemplo</p>
+				</div>
+				<div class="jumbotron">
+                    <h3>Eliminar un nodo secundario</h3>
+                    <div id="nodosecudiv1">
+                    <p id="nodosecup1">Primer Parrafo</p>
+                    <p id="nodosecup2">Segundo Parrafo</p>
+                    </div>
+                    <button class="btn btn-default" onclick="removerElemento2()">Remover Elemento</button>
+                    
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="thumbnail">
+				<div class="caption">
+					<h3 class="text-center">Reemplazo de elementos HTML</h3>
+					<p>Para reemplazar un elemento en el DOM HTML, use el replaceChild()método:</p>
+					<p class="text-danger">Ejemplo</p>
+				</div>
+				
+				<div class="jumbotron">
+                <h3>Reemplazo de elementos HTML</h3>
+                <div id="reempdiv1">
+                <p id="reempp1">Primer Parrafo</p>
+                <p id="reempp2">Segundo Parrafo</p>
+                </div>
+                <button class="btn btn-default" onclick="reemplazarElemento()">Reemplazar Elemento</button>
+                </div>
+                
+			</div>
+		</div>
+</div>
+</section>
+
+<section class="section" id="collections">
+<div class="container">
+	<h2 class="text-center title">JS HTML DOM Collections</h2>		
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<h2>Objeto HTMLCollection</h2><br>
+			<ul>
+				<li><p class="lead">El método <i>getElementsByTagName()</i> devuelve un objeto HTMLCollection.</p></li>
+				<li><p class="lead">Un objeto HTMLCollection es una lista (colección) parecida a una matriz de elementos HTML.</p></li>
+			</ul>												
+			<h2>Ejemplo</h2><br>
+			<p class="lead">El siguiente código selecciona todos los <i>&lt;p&gt;</i> elementos de un documento:</p>
+			<div class="thumbnail">
+				<p class="lead text-center"><i style="color: blue;">const</i> coleccion = document.getElementsByTagName(<i style="color: red;">"p"</i>);</p>	
+			</div>
+			<p class="lead">Se puede acceder a los elementos de la colección mediante un número de índice.</p>
+			<p class="lead">Para acceder al tercer elemento <i>&lt;p&gt;</i> se puede escribir:</p>
+			<div class="thumbnail">
+				<p class="lead text-center">coleccion[<i style="color: red;">"2"</i>]</p>
+			</div>
+			<div class="thumbnail">
+				<div id="ejemploCollections">
+					<p class="lead">Primer párrafo</p>
+					<p class="lead">Segundo párrafo</p>
+					<p class="lead">Tercer párrafo</p>
+				</div>
+				<label for="indice" class="lead">Ingrese índice: </label>
+				<input type="number" class="lead" name="indice" id="idIndice" min="0"><br>
+				<button class="btn btn-default lead" onclick="coleccion();">Enviar</button>			
+				<p class="lead" id="ejemplo1"></p>				
+			</div>
+			<h2>HTML HTMLCollection Length</h2><br>
+			<p class="lead">La propiedad <i>length</i> define el número de elementos en un HTMLCollection:</p>
+			<div class="thumbnail">
+				<p class="lead text-center">miColeccion.length</p>
+			</div>
+			<p class="lead">La propiedad <i>length</i> es útil cuando se desea recorrer los elementos de una colección.</p>
+			<h2>Ejemplo</h2><br>
+			<p class="lead">El siguiente código cambia el color de todos los <i>&lt;p&gt;</i> elementos:</p>
+			<div class="thumbnail">
+				<p class="lead"><i style="color: blue;">const</i> miColeccion = document.getElementsByTagName(<i style="color: red;">"p"</i>);</p>
+				<p class="lead"><i style="color: blue;">for</i> (<i style="color: blue;">let</i> i = 0; i < miColeccion.length; i++) {</p>
+				<p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;miColeccion[i].style.color = <i style="color: red;">"red"</i>;</p>
+				<p class="lead">}</p>
+			</div>
+			<div class="thumbnail">
+				<div id="ejemploCollections2">
+					<p class="lead">Grupo 04</p>
+					<p class="lead">Integrantes:</p>
+					<p class="lead">Byron Ávalos</p>
+					<p class="lead">Kevin Cando</p>
+					<p class="lead">Henry Jaramillo</p>
+					<p class="lead">Presione el botón para cambiar el color de los párrafos.</p>
+				</div>			
+				<button class="btn btn-default lead" onclick="colorCambio();">Cambiar</button>
+				<button class="btn btn-default lead" onclick="colorNormal();">Deshacer</button>			
+			</div>
+			<div class="jumbotron">
+				<h2>Un HTMLCollection NO es una matriz!</h2>
+				<p>Se puede recorrer la lista y hacer referencia a los elementos con un número (como una matriz).</p>
+				<p>Sin embargo, no se puede usar métodos de matriz, como <i>valueOf(), push(), pop () o join ()</i> en un HTMLCollection.</p>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<!-- Load js libs only when the page is loaded. -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="./js/modernizr.custom.72241.js"></script>
+<!-- Custom template scripts -->
+<script src="./js/magister.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
